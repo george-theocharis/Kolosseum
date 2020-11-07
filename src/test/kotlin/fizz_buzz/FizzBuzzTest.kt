@@ -45,4 +45,11 @@ class FizzBuzzTest {
         }
     }
 
+    @Test
+    fun `fizz buzz should return Buzz when invoked with 5`() {
+        val fizzBuzz = FizzBuzz()
+
+        fizzBuzz(5) shouldBe "Buzz"
+    }
+
 }
