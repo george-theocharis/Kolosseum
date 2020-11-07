@@ -40,7 +40,7 @@ class FizzBuzzTest {
     fun `fizz buzz should return Fizz when invoked with any multiple of 3`() {
         val fizzBuzz = FizzBuzz()
 
-        (1..15).filter { it % 3 == 0 }.forEach {
+        (1..15).filter { it % 3 == 0 && it % 5 != 0 }.forEach {
             fizzBuzz(it) shouldBe "Fizz"
         }
     }
@@ -57,6 +57,13 @@ class FizzBuzzTest {
         val fizzBuzz = FizzBuzz()
 
         fizzBuzz(10) shouldBe "Buzz"
+    }
+
+    @Test
+    fun `fizz buzz should return FizzBuzz when invoked with any multiple of 3 and 5`() {
+        val fizzBuzz = FizzBuzz()
+
+        fizzBuzz(15) shouldBe "FizzBuzz"
     }
 
 
