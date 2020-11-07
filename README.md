@@ -6,3 +6,8 @@ Amphitheatre for solving katas using Kotlin
 
 In the world of Kotlin, the Kolosseum will be the amphitheatre used for solving katas while practicing skills like **TDD**!
 
+## Katas
+
+1. Fizz Buzz
+    * Starting out with a well known novice exercise, fizz buzz. 
+    Rules can be found here: https://katalyst.codurance.com/fizzbuzz 
