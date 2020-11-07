@@ -23,7 +23,6 @@ class FizzBuzzTest {
         }
     }
 
-
     @Test
     fun `fizz buzz should return Fizz when invoked with any multiple of 3 and not of 5`() {
         val fizzBuzz = FizzBuzz()
