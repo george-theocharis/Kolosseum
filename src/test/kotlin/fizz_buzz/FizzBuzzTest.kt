@@ -52,4 +52,12 @@ class FizzBuzzTest {
         fizzBuzz(5) shouldBe "Buzz"
     }
 
+    @Test
+    fun `fizz buzz should return Buzz when invoked with any multiple of 5`() {
+        val fizzBuzz = FizzBuzz()
+
+        fizzBuzz(10) shouldBe "Buzz"
+    }
+
+
 }
