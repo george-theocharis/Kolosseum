@@ -39,7 +39,9 @@ class LeapYearTest {
         fun `if divisible by 400`() {
             val leapYear = LeapYear()
 
-            leapYear(1600) shouldBe true
+            (1000..2020)
+                .filter { year -> year % 400 == 0 }
+                .forEach { year -> leapYear(year) shouldBe true }
         }
 
     }
