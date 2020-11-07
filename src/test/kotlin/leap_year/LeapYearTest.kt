@@ -28,7 +28,9 @@ class LeapYearTest {
     fun `a year is not a leap year if not divisible by 4`() {
         val leapYear = LeapYear()
 
-        leapYear(1997) shouldBe false
+        (1000..2020)
+            .filter { year -> year % 4 != 0 }
+            .forEach { year -> leapYear(year) shouldBe false }
     }
 
     @Test
