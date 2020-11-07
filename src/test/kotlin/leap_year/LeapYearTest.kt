@@ -1,6 +1,7 @@
 package leap_year
 
 import io.kotest.matchers.shouldBe
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
@@ -26,7 +27,8 @@ import org.junit.jupiter.api.Test
 class LeapYearTest {
 
     @Nested
-    inner class `is leap year` {
+    @DisplayName("Is leap year")
+    inner class IsLeapYear {
 
         @Test
         fun `if divisible by 4`() {
@@ -50,7 +52,8 @@ class LeapYearTest {
     }
 
     @Nested
-    inner class `is not a leap year` {
+    @DisplayName("Is not leap year")
+    inner class IsNotLeapYear {
 
         @Test
         fun `if not divisible by 4`() {
