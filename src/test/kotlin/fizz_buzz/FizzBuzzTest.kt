@@ -1,6 +1,5 @@
 package fizz_buzz
 
-import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 

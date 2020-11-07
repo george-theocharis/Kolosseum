@@ -1,10 +1,13 @@
 package fizz_buzz
 
 class FizzBuzz {
+
     operator fun invoke(number: Int) = when {
-        number % 3 == 0 && number % 5 == 0 -> "FizzBuzz"
-        number % 3 == 0 -> "Fizz"
-        number % 5 == 0 -> "Buzz"
+        number.isMultipleOf(3, 5) -> "FizzBuzz"
+        number.isMultipleOf(3) -> "Fizz"
+        number.isMultipleOf(5) -> "Buzz"
         else -> number.toString()
     }
+
+    private fun Int.isMultipleOf(vararg div: Int) = div.all { this % it == 0 }
 }
