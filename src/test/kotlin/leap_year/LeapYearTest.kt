@@ -38,4 +38,11 @@ class LeapYearTest {
         leapYear(1996) shouldBe true
     }
 
+    @Test
+    fun `a year is a leap year if divisible by 400`() {
+        val leapYear = LeapYear()
+
+        leapYear(1600) shouldBe true
+    }
+
 }
