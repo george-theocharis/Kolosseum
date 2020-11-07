@@ -15,55 +15,39 @@ import org.junit.jupiter.api.Test
 class FizzBuzzTest {
 
     @Test
-    fun `fizz buzz should return 1 when invoked with 1`() {
+    fun `fizz buzz should be the value when invoked with a number that is not multiple of 3 or 5`() {
         val fizzBuzz = FizzBuzz()
 
-        fizzBuzz(1) shouldBe "1"
+        (1..100).filter { it % 3 != 0 && it % 5 != 0 }.forEach {
+            fizzBuzz(it) shouldBe it.toString()
+        }
     }
 
-    @Test
-    fun `fizz buzz should return 2 when invoked with 2`() {
-        val fizzBuzz = FizzBuzz()
-
-        fizzBuzz(2) shouldBe "2"
-    }
 
     @Test
-    fun `fizz buzz should return 4 when invoked with 4`() {
+    fun `fizz buzz should return Fizz when invoked with any multiple of 3 and not of 5`() {
         val fizzBuzz = FizzBuzz()
 
-        fizzBuzz(4) shouldBe "4"
-    }
-
-    @Test
-    fun `fizz buzz should return Fizz when invoked with any multiple of 3`() {
-        val fizzBuzz = FizzBuzz()
-
-        (1..15).filter { it % 3 == 0 && it % 5 != 0 }.forEach {
+        (1..100).filter { it % 3 == 0 && it % 5 != 0 }.forEach {
             fizzBuzz(it) shouldBe "Fizz"
         }
     }
 
     @Test
-    fun `fizz buzz should return Buzz when invoked with 5`() {
+    fun `fizz buzz should return Buzz when invoked with any multiple of 5 and not of 3`() {
         val fizzBuzz = FizzBuzz()
 
-        fizzBuzz(5) shouldBe "Buzz"
+        (1..100).filter { it % 3 != 0 && it % 5 == 0 }.forEach {
+            fizzBuzz(it) shouldBe "Buzz"
+        }
     }
 
     @Test
-    fun `fizz buzz should return Buzz when invoked with any multiple of 5`() {
+    fun `fizz buzz should return FizzBuzz when invoked with any multiple of both 3 and 5`() {
         val fizzBuzz = FizzBuzz()
 
-        fizzBuzz(10) shouldBe "Buzz"
+        (1..100).filter { it % 3 == 0 && it % 5 == 0 }.forEach {
+            fizzBuzz(it) shouldBe "FizzBuzz"
+        }
     }
-
-    @Test
-    fun `fizz buzz should return FizzBuzz when invoked with any multiple of 3 and 5`() {
-        val fizzBuzz = FizzBuzz()
-
-        fizzBuzz(15) shouldBe "FizzBuzz"
-    }
-
-
 }
