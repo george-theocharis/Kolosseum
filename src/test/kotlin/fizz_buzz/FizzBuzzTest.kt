@@ -1,5 +1,6 @@
 package fizz_buzz
 
+import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
@@ -33,6 +34,13 @@ class FizzBuzzTest {
         val fizzBuzz = FizzBuzz()
 
         fizzBuzz(4) shouldBe "4"
+    }
+
+    @Test
+    fun `fizz buzz should return Fizz when invoked with 3`() {
+        val fizzBuzz = FizzBuzz()
+
+        fizzBuzz(3) shouldBe "Fizz"
     }
 
 }
