@@ -2,16 +2,16 @@ package roman_numerals
 
 private val romanValues = mapOf(
     20 to "XX",
+    19 to "XIX",
     15 to "XV",
+    14 to "XIV",
     10 to "X",
-    5 to "V"
+    9 to "IX",
+    5 to "V",
+    4 to "IV",
 )
 
 fun convert(amount: Int): String {
-    if (amount == 4) return "IV"
-    if (amount == 9) return "IX"
-    if (amount == 14) return "XIV"
-    if (amount == 19) return "XIX"
     var roman = ""
     var editableAmount = amount
     romanValues.entries.forEach {
