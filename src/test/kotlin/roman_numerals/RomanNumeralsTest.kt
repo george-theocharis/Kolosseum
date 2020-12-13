@@ -52,4 +52,10 @@ class RomanNumeralsTest {
 
         convert(8) shouldBe "VIII"
     }
+
+    @Test
+    fun `converting 9 should be "IX"`() {
+
+        convert(9) shouldBe "IX"
+    }
 }
