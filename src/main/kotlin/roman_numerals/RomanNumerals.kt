@@ -1,6 +1,7 @@
 package roman_numerals
 
 private val romanValues = mapOf(
+    50 to "L",
     40 to "XL",
     10 to "X",
     9 to "IX",

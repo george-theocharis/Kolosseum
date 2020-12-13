@@ -59,4 +59,9 @@ class RomanNumeralsTest {
     fun `converting 40 should be "XL"`() {
         convert(40) shouldBe "XL"
     }
+
+    @Test
+    fun `converting 50 should be "L"`() {
+        convert(50) shouldBe "L"
+    }
 }
