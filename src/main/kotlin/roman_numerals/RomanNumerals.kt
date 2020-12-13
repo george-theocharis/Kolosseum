@@ -9,18 +9,18 @@ private val romanValues = mapOf(
     9 to "IX",
     5 to "V",
     4 to "IV",
+    1 to "I"
 )
 
 fun convert(amount: Int): String {
     var roman = ""
     var editableAmount = amount
     romanValues.entries.forEach {
-        if(editableAmount >= it.key) {
-            roman = it.value
-            editableAmount = amount - it.key
+        while(editableAmount >= it.key) {
+            roman += it.value
+            editableAmount -= it.key
         }
     }
-    repeat(editableAmount) { roman += "I" }
     return roman
 }
 
