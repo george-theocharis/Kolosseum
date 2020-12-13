@@ -1,23 +1,24 @@
 package roman_numerals
 
+private val romanValues = mapOf(
+    15 to "XV",
+    10 to "X",
+    5 to "V"
+)
+
 fun convert(amount: Int): String {
-    if(amount == 4) return "IV"
-    if(amount == 9) return "IX"
-    if(amount == 14) return "XIV"
+    if (amount == 4) return "IV"
+    if (amount == 9) return "IX"
+    if (amount == 14) return "XIV"
     var roman = ""
     var editableAmount = amount
-    if(amount >= 15) {
-        roman = "XV"
-        editableAmount = amount - 15
-    }
-    if(editableAmount >= 10) {
-        roman = "X"
-        editableAmount = amount - 10
-    }
-    if(editableAmount >= 5) {
-        roman = "V"
-        editableAmount = amount - 5
+    romanValues.entries.forEach {
+        if(editableAmount >= it.key) {
+            roman = it.value
+            editableAmount = amount - it.key
+        }
     }
     repeat(editableAmount) { roman += "I" }
     return roman
 }
+
