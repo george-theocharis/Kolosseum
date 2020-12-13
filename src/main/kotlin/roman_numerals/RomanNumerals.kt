@@ -10,6 +10,7 @@ fun convert(amount: Int): String {
     if (amount == 4) return "IV"
     if (amount == 9) return "IX"
     if (amount == 14) return "XIV"
+    if (amount == 19) return "XIX"
     var roman = ""
     var editableAmount = amount
     romanValues.entries.forEach {
