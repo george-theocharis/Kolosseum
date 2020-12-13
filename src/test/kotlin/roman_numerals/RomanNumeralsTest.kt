@@ -60,8 +60,8 @@ class RomanNumeralsTest {
     }
 
     @Test
-    fun `converting 10 should be "X"`() {
+    fun `converting 10 to 13 should be "X, XI, XII, XIII"`() {
 
-        convert(10) shouldBe "X"
+        (10..13).map { convert(it) } shouldBe listOf("X", "XI", "XII", "XIII")
     }
 }
