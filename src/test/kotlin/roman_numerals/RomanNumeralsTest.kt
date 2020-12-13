@@ -28,4 +28,10 @@ class RomanNumeralsTest {
 
         convert(4) shouldBe "IV"
     }
+
+    @Test
+    fun `converting 5 should be "V"`() {
+
+        convert(5) shouldBe "V"
+    }
 }
