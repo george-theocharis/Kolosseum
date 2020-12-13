@@ -69,4 +69,10 @@ class RomanNumeralsTest {
     fun `converting 14 should be "XIV"`() {
         convert(14) shouldBe "XIV"
     }
+
+    @Test
+    fun `converting 15 to 18 should be "XV, XVI, XVII, XVIII"`() {
+
+        (15..18).map { convert(it) } shouldBe listOf("XV", "XVI", "XVII", "XVIII")
+    }
 }

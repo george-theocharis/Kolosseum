@@ -6,7 +6,11 @@ fun convert(amount: Int): String {
     if(amount == 14) return "XIV"
     var roman = ""
     var editableAmount = amount
-    if(amount >= 10) {
+    if(amount >= 15) {
+        roman = "XV"
+        editableAmount = amount - 15
+    }
+    if(editableAmount >= 10) {
         roman = "X"
         editableAmount = amount - 10
     }
