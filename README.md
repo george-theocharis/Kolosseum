@@ -14,3 +14,6 @@ In the world of Kotlin, the Kolosseum will be the amphitheatre used for solving 
 2. **Leap Year**
     * Second kata solved, is leap year, another small exercise to practice out. 
     Rules can be found here: https://katalyst.codurance.com/leap-year
+3. **Roman Numerals**
+    * Third kata solving out will be the roman numerals. It's a medium sized kata that one coulde feel
+    ready to solve after the first two. Rules can be found here: https://katalyst.codurance.com/roman-numerals
