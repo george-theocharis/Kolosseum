@@ -2,10 +2,12 @@ package roman_numerals
 
 fun convert(amount: Int): String {
     var roman = ""
-    if(amount == 7) return "VII"
-    if(amount == 6) return "VI"
-    if(amount == 5) return "V"
-    if(amount == 4) return "IV"
-    repeat(amount) { roman += "I" }
+    var editableAmount = amount
+    if(amount >= 5) {
+        roman = "V"
+        editableAmount = amount - 5
+    }
+    if(editableAmount == 4) return "IV"
+    repeat(editableAmount) { roman += "I" }
     return roman
 }
