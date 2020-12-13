@@ -1,6 +1,7 @@
 package roman_numerals
 
 private val romanValues = mapOf(
+    20 to "XX",
     15 to "XV",
     10 to "X",
     5 to "V"

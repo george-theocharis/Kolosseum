@@ -44,4 +44,9 @@ class RomanNumeralsTest {
     fun `converting 19 should be "XIX"`() {
         convert(19) shouldBe "XIX"
     }
+
+    @Test
+    fun `converting 20 should be "XX"`() {
+        convert(20) shouldBe "XX"
+    }
 }
