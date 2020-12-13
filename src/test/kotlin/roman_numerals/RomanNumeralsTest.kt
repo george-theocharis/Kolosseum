@@ -84,4 +84,29 @@ class RomanNumeralsTest {
     fun `converting 90 should be "XC"`() {
         convert(90) shouldBe "XC"
     }
+
+    @Test
+    fun `converting 100 should be "C"`() {
+        convert(100) shouldBe "C"
+    }
+
+    @Test
+    fun `converting 400 should be "CD"`() {
+        convert(400) shouldBe "CD"
+    }
+
+    @Test
+    fun `converting 500 should be "D"`() {
+        convert(500) shouldBe "D"
+    }
+
+    @Test
+    fun `converting 900 should be "CM"`() {
+        convert(900) shouldBe "CM"
+    }
+
+    @Test
+    fun `converting 1000 should be "M"`() {
+        convert(1000) shouldBe "M"
+    }
 }
