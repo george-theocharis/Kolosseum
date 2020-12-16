@@ -14,4 +14,11 @@ class StringCalculatorTest {
         result shouldBe 0
     }
 
+    @Test
+    fun `should return number when adding a string including a single number`() {
+        val result = calculator.add("4")
+
+        result shouldBe 4
+    }
+
 }
