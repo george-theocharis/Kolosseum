@@ -21,4 +21,11 @@ class StringCalculatorTest {
         result shouldBe 4
     }
 
+    @Test
+    fun `should return the sum when passing a string with two numbers comma separated`() {
+        val result = calculator.add("1,2")
+
+        result shouldBe 3
+    }
+
 }
