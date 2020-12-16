@@ -36,4 +36,11 @@ class StringCalculatorTest {
         }
     }
 
+    @Test
+    fun `should throw a malformed exception when passing a string with characters and a number`() {
+        assertThrows<BadInputFormatException> {
+            calculator.add("1,k")
+        }
+    }
+
 }

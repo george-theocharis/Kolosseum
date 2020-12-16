@@ -6,11 +6,11 @@ class StringCalculator {
 
     fun add(numbers: String): Int {
         if (numbers.isEmpty()) return 0
-        if (numbers.contains(',')) {
-            val splitted = numbers.split(',')
-            return splitted[0].toInt() + splitted[1].toInt()
-        }
         return try {
+            if (numbers.contains(',')) {
+                val splitted = numbers.split(',')
+                return splitted[0].toInt() + splitted[1].toInt()
+            }
             numbers.toInt()
         } catch (e: NumberFormatException) {
             throw BadInputFormatException("Inappropriate input: $numbers")
@@ -19,4 +19,4 @@ class StringCalculator {
 
 }
 
-class BadInputFormatException(val reason:String) : Exception()
+class BadInputFormatException(val reason: String) : Exception()
