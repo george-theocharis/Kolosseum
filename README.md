@@ -16,4 +16,6 @@ In the world of Kotlin, the Kolosseum will be the amphitheatre used for solving 
     Rules can be found here: https://katalyst.codurance.com/leap-year
 3. **Roman Numerals**
     * Third kata solving out will be the roman numerals. It's a medium sized kata that one coulde feel
-    ready to solve after the first two. Rules can be found here: https://katalyst.codurance.com/roman-numerals
+    ready to solve after the first two. Rules can be found here: https://katalyst.codurance.com/roman-numerals3. **Roman Numerals**
+4. **String Calculator** 
+   * Next kata will be the string calculator numerals. Rules can be found here: https://katalyst.codurance.com/string-calculator
