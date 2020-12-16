@@ -8,8 +8,9 @@ class StringCalculator {
         if (numbers.isEmpty()) return 0
         return try {
             if (numbers.contains(',')) {
-                val splitted = numbers.split(',')
-                return splitted[0].toInt() + splitted[1].toInt()
+                return numbers.split(',').fold(0) { sum: Int, splittedValue: String ->
+                     sum + splittedValue.toInt()
+                }
             }
             numbers.toInt()
         } catch (e: NumberFormatException) {
