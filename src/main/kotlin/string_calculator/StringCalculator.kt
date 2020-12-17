@@ -7,20 +7,21 @@ class StringCalculator {
     fun add(numbers: String): Int {
         if (numbers.isEmpty()) return 0
         return try {
-            var separator = ","
-            var valueToSplit = numbers
+            var pair = Pair(",", numbers)
             if (numbers.startsWith("//")) {
                 val customSeparator = numbers.substringAfter('[').substringBefore(']')
-                if (customSeparator != numbers) {
-                    separator = customSeparator
-                    valueToSplit = numbers.substring( customSeparator.length + 5)
+                pair = if (customSeparator != numbers) {
+                    Pair(customSeparator, numbers.substring(customSeparator.length + 5))
                 } else {
-                    separator = numbers[2].toString()
-                    valueToSplit = numbers.substring(4)
+                    Pair(
+                        numbers.substringAfter("//").substringBefore("\n"),
+                        numbers.substringAfter("\n")
+                    )
                 }
             }
             val negatives = mutableListOf<Int>()
-            val sum = valueToSplit
+            val (separator, value) = pair
+            val sum = value
                 .split(separator, ",", "\n")
                 .map { it.toInt() }
                 .filter { it <= 1000 }
