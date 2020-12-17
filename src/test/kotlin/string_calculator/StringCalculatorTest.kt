@@ -92,4 +92,11 @@ class StringCalculatorTest {
         result shouldBe 6
     }
 
+    @Test
+    fun `should be able to add multiple custom separators if inside brackets`() {
+        val result = calculator.add("//[*][%]\n1*2%3")
+
+        result shouldBe 6
+    }
+
 }

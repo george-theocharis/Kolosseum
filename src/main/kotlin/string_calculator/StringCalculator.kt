@@ -1,28 +1,35 @@
 package string_calculator
 
 import java.lang.NumberFormatException
+import java.util.regex.Pattern
 
 class StringCalculator {
 
     fun add(numbers: String): Int {
         if (numbers.isEmpty()) return 0
         return try {
-            var pair = Pair(",", numbers)
+            val separators = mutableSetOf("\n", ",")
+            var toBeSplitted = numbers
             if (numbers.startsWith("//")) {
-                val customSeparator = numbers.substringAfter('[').substringBefore(']')
-                pair = if (customSeparator != numbers) {
-                    Pair(customSeparator, numbers.substring(customSeparator.length + 5))
+                var customSeparator = numbers.substringAfter('[').substringBefore(']')
+                if (customSeparator != numbers) {
+                    var value = numbers
+                    while (customSeparator != value) {
+                        separators.add(customSeparator)
+                        value = value.substringAfter("[$customSeparator]")
+                        customSeparator = value.substringAfter('[').substringBefore(']')
+                    }
+                    toBeSplitted = value.substringAfter("\n")
                 } else {
-                    Pair(
-                        numbers.substringAfter("//").substringBefore("\n"),
-                        numbers.substringAfter("\n")
-                    )
+                    separators.add(numbers.substringAfter("//").substringBefore("\n"))
+                    toBeSplitted = numbers.substringAfter("\n")
                 }
             }
+
             val negatives = mutableListOf<Int>()
-            val (separator, value) = pair
-            val sum = value
-                .split(separator, ",", "\n")
+            val sum = toBeSplitted
+                .split(Pattern.compile(separators.toString()))
+                .filterNot { it == "" }
                 .map { it.toInt() }
                 .filter { it <= 1000 }
                 .fold(0) { sum: Int, value: Int ->
