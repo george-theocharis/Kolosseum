@@ -57,4 +57,11 @@ class StringCalculatorTest {
         result shouldBe 6
     }
 
+    @Test
+    fun `should be able to add custom separator`() {
+        val result = calculator.add("//;\n1;2")
+
+        result shouldBe 3
+    }
+
 }
