@@ -13,12 +13,20 @@ class StringCalculator {
                 separator = numbers[2]
                 valueToSplit = numbers.substring(4)
             }
-
-            valueToSplit.split(separator, ',', '\n').fold(0) { sum: Int, splittedValue: String ->
+            var negatives = mutableListOf<Int>()
+            val sum = valueToSplit.split(separator, ',', '\n').fold(0) { sum: Int, splittedValue: String ->
                 val valueToAdd = splittedValue.toInt()
-                if(valueToAdd < 0) throw NegativesNotAllowedException()
+                if(valueToAdd < 0) negatives.add(valueToAdd)
                 sum + valueToAdd
             }
+
+            if (negatives.size == 0) return sum
+            if(negatives.size == 1) throw NegativesNotAllowedException("")
+            val reason = negatives.fold("") { acc, value ->
+                "$acc$value "
+            }.trimEnd()
+            throw NegativesNotAllowedException(reason)
+
         } catch (e: NumberFormatException) {
             throw BadInputFormatException("Inappropriate input: $numbers")
         }
@@ -27,4 +35,4 @@ class StringCalculator {
 }
 
 class BadInputFormatException(val reason: String) : Exception()
-class NegativesNotAllowedException : Exception()
+class NegativesNotAllowedException(reason: String) : Exception(reason)
