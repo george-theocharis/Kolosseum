@@ -85,4 +85,11 @@ class StringCalculatorTest {
         result shouldBe 2
     }
 
+    @Test
+    fun `should be able to add custom separator with arbitrary length if inside brackets`() {
+        val result = calculator.add("//[***]\n1***2***3")
+
+        result shouldBe 6
+    }
+
 }
