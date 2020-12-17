@@ -10,12 +10,14 @@ class StringCalculator {
             var separator = ','
             var valueToSplit = numbers
             if (numbers.startsWith("//")) {
-                separator= numbers[2]
+                separator = numbers[2]
                 valueToSplit = numbers.substring(4)
             }
 
             valueToSplit.split(separator, ',', '\n').fold(0) { sum: Int, splittedValue: String ->
-                sum + splittedValue.toInt()
+                val valueToAdd = splittedValue.toInt()
+                if(valueToAdd < 0) throw NegativesNotAllowedException()
+                sum + valueToAdd
             }
         } catch (e: NumberFormatException) {
             throw BadInputFormatException("Inappropriate input: $numbers")
@@ -25,3 +27,4 @@ class StringCalculator {
 }
 
 class BadInputFormatException(val reason: String) : Exception()
+class NegativesNotAllowedException : Exception()

@@ -64,4 +64,9 @@ class StringCalculatorTest {
         result shouldBe 3
     }
 
+    @Test
+    fun `should throw negatives not allowed exception when adding negative numbers`() {
+        assertThrows<NegativesNotAllowedException> { calculator.add("1,-2") }
+    }
+
 }
