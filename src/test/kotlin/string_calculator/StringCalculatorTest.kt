@@ -73,7 +73,7 @@ class StringCalculatorTest {
     fun `should throw negatives not allowed exception with all the negative numbers as error message given multiple negative numbers`() {
         try {
             calculator.add("1,-2,-3")
-        } catch (exception: NegativesNotAllowedException){
+        } catch (exception: NegativesNotAllowedException) {
             exception.message shouldBe "-2 -3"
         }
     }
@@ -91,6 +91,7 @@ class StringCalculatorTest {
 
         result shouldBe 6
     }
+
 
     @Test
     fun `should be able to add multiple custom separators if inside brackets`() {

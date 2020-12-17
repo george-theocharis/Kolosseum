@@ -9,44 +9,59 @@ class StringCalculator {
         if (numbers.isEmpty()) return 0
         return try {
             val separators = mutableSetOf("\n", ",")
-            var toBeSplitted = numbers
-            if (numbers.startsWith("//")) {
-                var value = numbers
-                var customSeparator = numbers.substringAfter('[').substringBefore(']')
-                if (customSeparator == numbers) {
-                    separators.add(numbers.substringAfter("//").substringBefore("\n"))
-                } else {
-                    while (customSeparator != value) {
-                        separators.add(customSeparator)
-                        value = value.substringAfter("[$customSeparator]")
-                        customSeparator = value.substringAfter('[').substringBefore(']')
-                    }
+            val (sum, negatives) = addValues(supportsCustomSeparator(numbers, separators), separators)
+            when (negatives.size) {
+                0 -> return sum
+                else -> {
+                    throw NegativesNotAllowedException(
+                        negatives.fold("") { acc, value -> "$acc$value " }.trimEnd()
+                    )
                 }
-                toBeSplitted = numbers.substringAfter("\n")
             }
-
-            val negatives = mutableListOf<Int>()
-            val sum = toBeSplitted
-                .split(Pattern.compile(separators.toString()))
-                .filterNot { it == "" }
-                .map { it.toInt() }
-                .filter { it <= 1000 }
-                .fold(0) { sum: Int, value: Int ->
-                    if (value < 0) negatives.add(value)
-                    sum + value
-                }
-
-            if (negatives.size == 0) return sum
-            if (negatives.size == 1) throw NegativesNotAllowedException("")
-            val reason = negatives.fold("") { acc, value ->
-                "$acc$value "
-            }.trimEnd()
-            throw NegativesNotAllowedException(reason)
-
         } catch (e: NumberFormatException) {
             throw BadInputFormatException("Inappropriate input: $numbers")
         }
     }
+
+    private fun addValues(
+        toBeSplit: String,
+        separators: MutableSet<String>
+    ): Pair<Int, MutableList<Int>> {
+        val negatives = mutableListOf<Int>()
+        val total = toBeSplit
+            .split(Pattern.compile(separators.toString()))
+            .filterNot { it == "" }
+            .map { it.toInt() }
+            .filter { it <= 1000 }
+            .fold(0) { sum: Int, value: Int ->
+                if (value < 0) negatives.add(value)
+                sum + value
+            }
+        return Pair(total, negatives)
+    }
+
+    private fun supportsCustomSeparator(
+        initial: String,
+        separators: MutableSet<String>
+    ) = if (initial.startsWith("//")) {
+        var value = initial
+        var customSeparator = extractCustomSeparator(initial)
+        if (customSeparator == initial) {
+            separators.add(initial.substringAfter("//").substringBefore("\n"))
+        } else {
+            while (customSeparator != value) {
+                separators.add(customSeparator)
+                value = removeCustomSeparator(value, customSeparator)
+                customSeparator = extractCustomSeparator(value)
+            }
+        }
+        initial.substringAfter("\n")
+    } else initial
+
+    private fun removeCustomSeparator(value: String, customSeparator: String) =
+        value.substringAfter("[$customSeparator]")
+
+    private fun extractCustomSeparator(numbers: String) = numbers.substringAfter('[').substringBefore(']')
 
 }
 
