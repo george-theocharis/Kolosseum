@@ -11,19 +11,18 @@ class StringCalculator {
             val separators = mutableSetOf("\n", ",")
             var toBeSplitted = numbers
             if (numbers.startsWith("//")) {
+                var value = numbers
                 var customSeparator = numbers.substringAfter('[').substringBefore(']')
-                if (customSeparator != numbers) {
-                    var value = numbers
+                if (customSeparator == numbers) {
+                    separators.add(numbers.substringAfter("//").substringBefore("\n"))
+                } else {
                     while (customSeparator != value) {
                         separators.add(customSeparator)
                         value = value.substringAfter("[$customSeparator]")
                         customSeparator = value.substringAfter('[').substringBefore(']')
                     }
-                    toBeSplitted = value.substringAfter("\n")
-                } else {
-                    separators.add(numbers.substringAfter("//").substringBefore("\n"))
-                    toBeSplitted = numbers.substringAfter("\n")
                 }
+                toBeSplitted = numbers.substringAfter("\n")
             }
 
             val negatives = mutableListOf<Int>()
