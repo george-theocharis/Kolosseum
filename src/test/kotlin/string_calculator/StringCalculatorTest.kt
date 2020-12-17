@@ -78,4 +78,11 @@ class StringCalculatorTest {
         }
     }
 
+    @Test
+    fun `should ignore numbers bigger than 1000`() {
+        val result = calculator.add("2,10001")
+
+        result shouldBe 2
+    }
+
 }
