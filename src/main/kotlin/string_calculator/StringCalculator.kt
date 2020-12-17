@@ -7,7 +7,7 @@ class StringCalculator {
     fun add(numbers: String): Int {
         if (numbers.isEmpty()) return 0
         return try {
-            numbers.split(',').fold(0) { sum: Int, splittedValue: String ->
+            numbers.split(',','\n').fold(0) { sum: Int, splittedValue: String ->
                 sum + splittedValue.toInt()
             }
         } catch (e: NumberFormatException) {

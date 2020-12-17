@@ -50,4 +50,11 @@ class StringCalculatorTest {
         result shouldBe 45
     }
 
+    @Test
+    fun `should consider new line as a separator too`() {
+        val result = calculator.add("1\n2,3")
+
+        result shouldBe 6
+    }
+
 }
