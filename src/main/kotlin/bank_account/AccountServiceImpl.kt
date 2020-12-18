@@ -9,7 +9,7 @@ class AccountServiceImpl(
     }
 
     override fun withdraw(amount: Int) {
-        TODO("Not yet implemented")
+        account.withdraw(amount)
     }
 
     override fun printStatement() {

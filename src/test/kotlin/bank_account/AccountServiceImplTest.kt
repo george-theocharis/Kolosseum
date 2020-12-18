@@ -18,4 +18,11 @@ internal class AccountServiceImplTest {
         verify { account.deposit(1000) }
     }
 
+    @Test
+    fun `withdraw an amount`() {
+        accountServiceImpl.withdraw(500)
+
+        verify { account.withdraw(500) }
+    }
+
 }
