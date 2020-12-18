@@ -13,6 +13,7 @@ repositories {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
     testImplementation("io.kotest:kotest-assertions-core:4.3.1")
+    testImplementation("io.mockk:mockk:1.10.2")
 }
 tasks.withType<Test> {
     useJUnitPlatform()
