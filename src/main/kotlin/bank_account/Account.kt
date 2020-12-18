@@ -1,16 +1,30 @@
 package bank_account
 
-class Account {
-    val transactions: List<Transaction> = mutableListOf()
-    private var total: Int = 0
+class Account(private val timeStamper: TimeStamper) {
 
-    fun deposit(amount: Int): Int {
-        total = amount
-        return amount
+    private var balance: Int = 0
+
+    private val _transactions = mutableListOf<Transaction>()
+    val transactions: List<Transaction> = _transactions
+
+    fun deposit(amount: Int) = Transaction(
+        amount = amount,
+        balance = balance + amount,
+        date = timeStamper.addTimestamp()
+    ).also {
+        balance += amount
+        _transactions.add(it)
     }
 
-    fun withdraw(amount: Int): Int {
-        if(total - amount < 0) throw NotViableTransactionException()
-        return total - amount
+    fun withdraw(amount: Int): Transaction {
+        if (balance - amount < 0) throw NotViableTransactionException()
+        return Transaction(
+            amount = amount,
+            balance = balance - amount,
+            date = timeStamper.addTimestamp()
+        ).also {
+            balance -= amount
+            _transactions.add(it)
+        }
     }
 }

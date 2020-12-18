@@ -1,27 +1,33 @@
 package bank_account
 
 import io.kotest.matchers.shouldBe
+import io.mockk.every
+import io.mockk.mockk
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class AccountTest {
 
-    private val account = Account()
+    private val timeStamper: TimeStamper = mockk(relaxed = true)
+    private val account = Account(timeStamper)
 
     @Test
-    fun `deposit an amount`() {
+    fun `given a zero balance account, depositing an amount, creates a transaction with amount and balance the same`() {
+        every { timeStamper.addTimestamp() } returns "18/12/2020"
+
         val result = account.deposit(1000)
 
-        result shouldBe 1000
+        result shouldBe Transaction(1000, 1000, "18/12/2020")
     }
 
     @Test
-    fun `given an account with 1000, when withdrawing 1000, then result should be 0`() {
+    fun `given an account with 1000, when withdrawing 1000, then creates a transaction with zero balance`() {
+        every { timeStamper.addTimestamp() } returns "18/12/2020"
         account.deposit(1000)
 
         val result = account.withdraw(1000)
 
-        result shouldBe 0
+        result shouldBe Transaction(1000, 0, "18/12/2020")
     }
 
     @Test

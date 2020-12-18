@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test
 class PrintStatementFeature {
 
     private val console = mockk<Console>(relaxed = true)
-    private val account = Account()
+    private val timeStamper = mockk<TimeStamper>(relaxed = true)
+    private val account = Account(timeStamper)
     private val statementPrinter = StatementPrinter(console)
     private val accountService = AccountServiceImpl(account, statementPrinter)
 
