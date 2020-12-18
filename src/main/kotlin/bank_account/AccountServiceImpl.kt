@@ -14,7 +14,7 @@ class AccountServiceImpl(
 
     override fun printStatement() {
         statementPrinter.printHeader("Date       || Amount || Balance")
-        account.transactions.forEach {
+        account.transactions.reversed().forEach {
             statementPrinter.printTransaction("${it.date} || ${ it.amount}   || ${it.balance}")
         }
     }
