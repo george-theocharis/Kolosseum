@@ -1,8 +1,9 @@
 package bank_account
 
-class StatementPrinter {
-    fun printHeader(s: String) {
-        TODO("Not yet implemented")
+class StatementPrinter(private val console: Console) {
+
+    fun printHeader(header: String) {
+        console.print(header)
     }
 
     fun printTransaction(s: String) {

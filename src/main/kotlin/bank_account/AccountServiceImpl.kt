@@ -13,6 +13,6 @@ class AccountServiceImpl(
     }
 
     override fun printStatement() {
-        TODO("Not yet implemented")
+        statementPrinter.printHeader("Date       || Amount || Balance")
     }
 }
