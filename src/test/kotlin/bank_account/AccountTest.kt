@@ -17,7 +17,7 @@ class AccountTest {
 
         val result = account.deposit(1000)
 
-        result shouldBe Transaction(1000, 1000, "18/12/2020")
+        result shouldBe Transaction(1000, 1000, "18/12/2020", Transaction.TransactionType.DEPOSIT)
     }
 
     @Test
@@ -27,7 +27,7 @@ class AccountTest {
 
         val result = account.withdraw(1000)
 
-        result shouldBe Transaction(1000, 0, "18/12/2020")
+        result shouldBe Transaction(1000, 0, "18/12/2020", Transaction.TransactionType.WITHDRAW)
     }
 
     @Test

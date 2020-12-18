@@ -15,7 +15,14 @@ class AccountServiceImpl(
     override fun printStatement() {
         statementPrinter.printHeader("Date       || Amount || Balance")
         account.transactions.reversed().forEach {
-            statementPrinter.printTransaction("${it.date} || ${ it.amount}   || ${it.balance}")
+            statementPrinter.printTransaction("${it.date} || ${resolveType(it.type)}${it.amount}   || ${it.balance}")
+        }
+    }
+
+    private fun resolveType(type: Transaction.TransactionType): String {
+        return when (type) {
+            Transaction.TransactionType.WITHDRAW -> "-"
+            else -> ""
         }
     }
 }

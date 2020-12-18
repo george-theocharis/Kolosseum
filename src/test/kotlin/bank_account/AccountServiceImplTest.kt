@@ -37,7 +37,9 @@ internal class AccountServiceImplTest {
 
     @Test
     fun `when printing statement, then print all transactions`() {
-        every { account.transactions } returns listOf(Transaction(amount = 1000, balance = 1000, date = "18/12/2020"))
+        every { account.transactions } returns listOf(
+            Transaction(amount = 1000, balance = 1000, date = "18/12/2020", Transaction.TransactionType.DEPOSIT)
+        )
 
         accountServiceImpl.printStatement()
 

@@ -10,7 +10,8 @@ class Account(private val timeStamper: TimeStamper) {
     fun deposit(amount: Int) = Transaction(
         amount = amount,
         balance = balance + amount,
-        date = timeStamper.addTimestamp()
+        date = timeStamper.addTimestamp(),
+        type = Transaction.TransactionType.DEPOSIT
     ).also {
         balance += amount
         _transactions.add(it)
@@ -21,7 +22,8 @@ class Account(private val timeStamper: TimeStamper) {
         return Transaction(
             amount = amount,
             balance = balance - amount,
-            date = timeStamper.addTimestamp()
+            date = timeStamper.addTimestamp(),
+            type = Transaction.TransactionType.WITHDRAW
         ).also {
             balance -= amount
             _transactions.add(it)
