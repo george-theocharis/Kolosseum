@@ -19,3 +19,6 @@ In the world of Kotlin, the Kolosseum will be the amphitheatre used for solving 
     ready to solve after the first two. Rules can be found here: https://katalyst.codurance.com/roman-numerals3. **Roman Numerals**
 4. **String Calculator** 
    * Next kata will be the string calculator numerals. Rules can be found here: https://katalyst.codurance.com/string-calculator
+5. **Bank Account**
+   * Next kata will be a bigger one that is perfect for practicing outside in TDD. 
+     Rules can be found here: https://katalyst.codurance.com/bank
