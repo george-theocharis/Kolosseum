@@ -6,8 +6,8 @@ class StatementPrinter(private val console: Console) {
         console.print(header)
     }
 
-    fun printTransaction(s: String) {
-        TODO("Not yet implemented")
+    fun printTransaction(transaction: String) {
+        console.print(transaction)
     }
 
 }

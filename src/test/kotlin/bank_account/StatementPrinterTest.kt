@@ -16,4 +16,11 @@ class StatementPrinterTest {
         verify { console.print("header") }
     }
 
+    @Test
+    fun `when printing transaction, then print the transaction to the console`() {
+        statementPrinter.printTransaction("transaction")
+
+        verify { console.print("transaction") }
+    }
+
 }

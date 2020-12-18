@@ -1,7 +1,9 @@
 package bank_account
 
+import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
+import io.mockk.verifyOrder
 import org.junit.jupiter.api.Test
 
 internal class AccountServiceImplTest {
@@ -30,6 +32,17 @@ internal class AccountServiceImplTest {
 
         verify {
             statementPrinter.printHeader("Date       || Amount || Balance")
+        }
+    }
+
+    @Test
+    fun `when printing statement, then print all transactions`() {
+        every { account.transactions } returns listOf(Transaction(amount = 1000, balance = 1000, date = "18/12/2020"))
+
+        accountServiceImpl.printStatement()
+
+        verify {
+            statementPrinter.printTransaction("18/12/2020 || 1000   || 1000")
         }
     }
 

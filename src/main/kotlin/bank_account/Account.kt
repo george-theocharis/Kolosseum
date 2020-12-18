@@ -1,6 +1,7 @@
 package bank_account
 
 class Account {
+    val transactions: List<Transaction> = mutableListOf()
     private var total: Int = 0
 
     fun deposit(amount: Int): Int {
